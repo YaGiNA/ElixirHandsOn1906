@@ -45,4 +45,14 @@ defmodule Basic do
     |> Stream.filter(fn d -> d["age"] <= 20 end)
     |> Enum.count
   end
+
+  def q2-2 do
+    "data.json"
+    |> File.stream!
+    |> Flow.from_enumerable
+    |> Flow.map(fn d -> Poison.decode!(d) end)
+    |> Flow.partition
+    |> Flow.filter(fn d -> d["age"] <= 20 end)
+    |> Enum.count
+  end
 end
