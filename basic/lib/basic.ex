@@ -30,24 +30,24 @@ defmodule Basic do
     Enum.count(filtered_data)
   end
 
-  def q1-2 do
-    "data.json"
+  def q1_2 do
+    "data/data.json"
     |> File.stream!
     |> Enum.map(fn d -> Poison.decode!(d) end)
     |> Enum.filter(fn d -> d["age"] <= 20 end)
     |> Enum.count
   end
   
-  def q2-1 do
-    "data.json"
+  def q2_1 do
+    "data/data.json"
     |> File.stream!
     |> Stream.map(fn d -> Poison.decode!(d) end)
     |> Stream.filter(fn d -> d["age"] <= 20 end)
     |> Enum.count
   end
 
-  def q2-2 do
-    "data.json"
+  def q2_2 do
+    "data/data.json"
     |> File.stream!
     |> Flow.from_enumerable
     |> Flow.map(fn d -> Poison.decode!(d) end)
