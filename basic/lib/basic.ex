@@ -37,4 +37,12 @@ defmodule Basic do
     |> Enum.filter(fn d -> d["age"] <= 20 end)
     |> Enum.count
   end
+  
+  def q2-1 do
+    "data.json"
+    |> File.stream!
+    |> Stream.map(fn d -> Poison.decode!(d) end)
+    |> Stream.filter(fn d -> d["age"] <= 20 end)
+    |> Enum.count
+  end
 end
